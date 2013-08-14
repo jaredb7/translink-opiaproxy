@@ -28,4 +28,3 @@ _ReSharper*/
 *.vssscc
 $tf*/
 packages/*
-OPIA.API.Client.Tests/App.config
