@@ -6,8 +6,14 @@ using OPIA.API.Client.OPIAEntities.Response.PlanUrl;
 
 namespace OPIA.API.Client.OpiaApiClients
 {
+    /// Abstraction/Facade client layer for interfacing with the actual Opia API method calls. Allows
+    /// us to change names, add functionality, etc.
     public class OpiaTravelClient : OpiaBaseClient
     {
+
+        //GET /travel/rest/plan/{fromLocationId}/{toLocationId} Generates travel plans between two locations
+        //GET /travel/rest/plan-url/{fromLocationId}/{toLocationId} Generates a URL to Translink's Journey Planner which suggests possible journeys
+
         public OpiaTravelClient(): base(OpiaApiConstants.TravelAPI)
         {
 

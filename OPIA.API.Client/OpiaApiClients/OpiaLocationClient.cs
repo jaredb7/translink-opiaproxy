@@ -9,8 +9,17 @@ using OPIA.API.Client.OPIAEntities.Response.StopsNearby;
 
 namespace OPIA.API.Client.OpiaApiClients
 {
+    /// Abstraction/Facade client layer for interfacing with the actual Opia API method calls. Allows
+    /// us to change names, add functionality, etc.
     public class OpiaLocationClient : OpiaBaseClient
     {
+
+        //GET /location/rest/resolve Suggests landmarks, stops, addresses, etc from free-form text
+        //GET /location/rest/stops-at-landmark/{locationId} Retrieves a list of Stops located at a Landmark
+        //GET /location/rest/stops-nearby/{locationId} Locates stops close to a specific location
+        //GET /location/rest/stops Retrieves a list of stops by their Stop ID
+        //GET /location/rest/locations Retrieves one or more locations by their ID
+
         public OpiaLocationClient() : base(OpiaApiConstants.LocationAPI)
         {
 

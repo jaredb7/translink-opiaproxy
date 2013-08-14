@@ -6,10 +6,11 @@ using OPIA.API.Client.OPIAEntities.Request.Version;
 
 namespace OPIA.API.Client.OpiaApiClients
 {
+    /// Abstraction/Facade client layer for interfacing with the actual Opia API method calls. Allows
+    /// us to change names, add functionality, etc.
     public class OpiaVersionClient : OpiaBaseClient
     {
 
-        // /version Show/Hide List Operations Expand Operations Raw
         // GET /version/rest/api API's public interface version
         // GET /version/rest/build Internal Translink build number of the API
 
