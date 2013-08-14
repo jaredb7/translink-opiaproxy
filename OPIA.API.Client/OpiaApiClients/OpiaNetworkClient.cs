@@ -12,7 +12,7 @@ namespace OPIA.API.Client.OpiaApiClients
 {
     /// <summary>
     /// Abstraction/Facade client layer for interfacing with the actual Opia API method calls. Allows
-    /// us to insert caching, change names, add functionality, etc.
+    /// us to change names, add functionality, etc.
     /// </summary>
     public class OpiaNetworkClient : OpiaBaseClient
     {
