@@ -23,7 +23,7 @@ namespace OPIA.API.Client.OpiaApiClients
 
         protected HttpClient HttpClient
         {
-            get {  return _httpClient ?? SetupNewHttpClient(); }
+            get { return _httpClient; }
             private set { _httpClient = value; }
         }
 
@@ -45,6 +45,7 @@ namespace OPIA.API.Client.OpiaApiClients
             _opiaLogin = ConfigurationManager.AppSettings["opiaLogin"];
             _opiaPassword = ConfigurationManager.AppSettings["opiaPassword"];
 
+            _httpClient = SetupNewHttpClient();
         }
 
         /// <summary>
@@ -56,7 +57,7 @@ namespace OPIA.API.Client.OpiaApiClients
         /// <returns>The populated ResponseEntity model</returns>
         public virtual T2 GetApiResult<T1, T2>(T1 requestEntity) where T1 : IRequest
         {
-            var request = this.HttpClient.GetAsync(requestEntity.ToString());
+            var request = _httpClient.GetAsync(requestEntity.ToString());
             var response = request.Result;
             response.EnsureSuccessStatusCode();
             var result = response.Content.ReadAsAsync<T2>().Result;
@@ -72,7 +73,7 @@ namespace OPIA.API.Client.OpiaApiClients
         /// <returns>The populated ResponseEntity model</returns>
         public virtual async Task<T2> GetApiResultAsync<T1, T2>(T1 requestEntity) where T1 : IRequest
         {
-            var response = await this.HttpClient.GetAsync(requestEntity.ToString());
+            var response = await _httpClient.GetAsync(requestEntity.ToString());
             response.EnsureSuccessStatusCode();
             var result = response.Content.ReadAsAsync<T2>().Result;
             return result;
@@ -86,10 +87,9 @@ namespace OPIA.API.Client.OpiaApiClients
                 Credentials = new NetworkCredential() { UserName = _opiaLogin, Password = _opiaPassword}
             };
 
-            _httpClient = new HttpClient(WebRequestHandler) { BaseAddress = _baseUri };
-            _httpClient.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
-
-            return _httpClient;
+            var client = new HttpClient(WebRequestHandler) { BaseAddress = _baseUri };
+            client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            return client;
         }
 
         /// <summary>
