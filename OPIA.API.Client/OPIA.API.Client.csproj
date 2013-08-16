@@ -52,6 +52,7 @@
     <Compile Include="OpiaApiClients\OpiaBaseClient.cs" />
     <Compile Include="OpiaApiClients\OpiaLocationClient.cs" />
     <Compile Include="OpiaApiClients\OpiaNetworkClient.cs" />
+    <Compile Include="OpiaApiClients\OpiaNetworkClientAsync.cs" />
     <Compile Include="OpiaApiClients\OpiaServiceClient.cs" />
     <Compile Include="OpiaApiClients\OpiaTravelClient.cs" />
     <Compile Include="OpiaApiClients\OpiaVersionClient.cs" />
