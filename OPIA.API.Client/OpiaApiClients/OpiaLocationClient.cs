@@ -1,11 +1,11 @@
 using System.Threading.Tasks;
-using OPIA.API.Client.Constants;
-using OPIA.API.Client.OPIAEntities.Request;
-using OPIA.API.Client.OPIAEntities.Response.Locations;
-using OPIA.API.Client.OPIAEntities.Response.Resolve;
-using OPIA.API.Client.OPIAEntities.Response.Stops;
-using OPIA.API.Client.OPIAEntities.Response.StopsAtLandmark;
-using OPIA.API.Client.OPIAEntities.Response.StopsNearby;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request;
+using OPIA.API.Contracts.OPIAEntities.Response.Locations;
+using OPIA.API.Contracts.OPIAEntities.Response.Resolve;
+using OPIA.API.Contracts.OPIAEntities.Response.Stops;
+using OPIA.API.Contracts.OPIAEntities.Response.StopsAtLandmark;
+using OPIA.API.Contracts.OPIAEntities.Response.StopsNearby;
 
 namespace OPIA.API.Client.OpiaApiClients
 {

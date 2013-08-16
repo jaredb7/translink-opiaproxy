@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OPIA.API.Client.Constants;
-using OPIA.API.Client.OPIAEntities.Request.Network;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request.Network;
 
 namespace OPIA.API.Client.Tests.EntityTests
 {

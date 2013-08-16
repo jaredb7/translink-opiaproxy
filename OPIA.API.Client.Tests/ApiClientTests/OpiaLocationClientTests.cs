@@ -3,8 +3,8 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using OPIA.API.Client.OpiaApiClients;
-using OPIA.API.Client.OPIAEntities.Request.Location;
-using OPIA.API.Client.OPIAEntities.Response.Locations;
+using OPIA.API.Contracts.OPIAEntities.Request.Location;
+using OPIA.API.Contracts.OPIAEntities.Response.Locations;
 
 namespace OPIA.API.Client.Tests.ApiClientTests
 {

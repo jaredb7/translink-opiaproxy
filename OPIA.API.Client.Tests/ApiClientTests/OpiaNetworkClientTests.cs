@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OPIA.API.Client.Constants;
 using OPIA.API.Client.OpiaApiClients;
-using OPIA.API.Client.OPIAEntities.Request.Network;
-using OPIA.API.Client.OPIAEntities.Response.Routes;
-using OPIA.API.Client.OPIAEntities.Response.TripMapPath;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request.Network;
+using OPIA.API.Contracts.OPIAEntities.Response.Routes;
+using OPIA.API.Contracts.OPIAEntities.Response.TripMapPath;
 
 namespace OPIA.API.Client.Tests.ApiClientTests
 {

@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
-using OPIA.API.Client.Constants;
-using OPIA.API.Client.OPIAEntities.Request;
-using OPIA.API.Client.OPIAEntities.Response.Plan;
-using OPIA.API.Client.OPIAEntities.Response.PlanUrl;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request;
+using OPIA.API.Contracts.OPIAEntities.Response.Plan;
+using OPIA.API.Contracts.OPIAEntities.Response.PlanUrl;
 
 namespace OPIA.API.Client.OpiaApiClients
 {

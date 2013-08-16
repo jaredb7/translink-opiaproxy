@@ -32,8 +32,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
@@ -54,69 +55,17 @@
     <Compile Include="OpiaApiClients\OpiaServiceClient.cs" />
     <Compile Include="OpiaApiClients\OpiaTravelClient.cs" />
     <Compile Include="OpiaApiClients\OpiaVersionClient.cs" />
-    <Compile Include="Constants\DirectionType.cs" />
-    <Compile Include="Constants\FareType.cs" />
-    <Compile Include="Constants\LocationType.cs" />
-    <Compile Include="Constants\OpiaApiConstants.cs" />
-    <Compile Include="Constants\ServiceType.cs" />
-    <Compile Include="Constants\TimeModeType.cs" />
-    <Compile Include="Constants\VehicleType.cs" />
-    <Compile Include="Constants\WalkingSpeedType.cs" />
-    <Compile Include="OPIAEntities\Request\IRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Location\LocationsRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Location\StopsRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Location\StopsNearbyRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Location\StopsAtLandmarkRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Location\ResolveRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Network\RouteMapPathRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Network\RoutesRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Network\RouteTimeTablesRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Network\StopTimeTablesRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Network\TripMapPathRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Network\TripsRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Travel\PlanUrlRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Travel\PlanRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Version\ApiVersionRequest.cs" />
-    <Compile Include="OPIAEntities\Request\Version\BuildVersionRequest.cs" />
-    <Compile Include="OPIAEntities\Response\Common\Position.cs" />
-    <Compile Include="OPIAEntities\Response\Common\Route.cs" />
-    <Compile Include="OPIAEntities\Response\Common\Trip.cs" />
-    <Compile Include="OPIAEntities\Response\Locations\Location.cs" />
-    <Compile Include="OPIAEntities\Response\Locations\LocationsResponse.cs" />
-    <Compile Include="OPIAEntities\Response\PlanUrl\PlanUrlResponse.cs" />
-    <Compile Include="OPIAEntities\Response\Plan\Fare.cs" />
-    <Compile Include="OPIAEntities\Response\Plan\FareDetails.cs" />
-    <Compile Include="OPIAEntities\Response\Plan\Itinerary.cs" />
-    <Compile Include="OPIAEntities\Response\Plan\Leg.cs" />
-    <Compile Include="OPIAEntities\Response\Plan\PlanResponse.cs" />
-    <Compile Include="OPIAEntities\Response\Plan\Traveloptions.cs" />
-    <Compile Include="OPIAEntities\Response\Resolve\Location.cs" />
-    <Compile Include="OPIAEntities\Response\Resolve\ResolveResponse.cs" />
-    <Compile Include="OPIAEntities\Response\RouteMapPath\Path.cs" />
-    <Compile Include="OPIAEntities\Response\RouteMapPath\RouteMapPathResponse.cs" />
-    <Compile Include="OPIAEntities\Response\Routes\RoutesResponse.cs" />
-    <Compile Include="OPIAEntities\Response\RouteTimeTable\Location.cs" />
-    <Compile Include="OPIAEntities\Response\RouteTimeTable\LocationInfo.cs" />
-    <Compile Include="OPIAEntities\Response\RouteTimeTable\RouteTimeTable.cs" />
-    <Compile Include="OPIAEntities\Response\RouteTimeTable\RouteTimeTablesResponse.cs" />
-    <Compile Include="OPIAEntities\Response\StopsAtLandmark\StopsAtLandmarkResponse.cs" />
-    <Compile Include="OPIAEntities\Response\StopsNearby\Distance.cs" />
-    <Compile Include="OPIAEntities\Response\StopsNearby\Nearbystop.cs" />
-    <Compile Include="OPIAEntities\Response\StopsNearby\StopsNearbyResponse.cs" />
-    <Compile Include="OPIAEntities\Response\Stops\Stop.cs" />
-    <Compile Include="OPIAEntities\Response\Stops\StopsResponse.cs" />
-    <Compile Include="OPIAEntities\Response\StopTimeTable\Stop.cs" />
-    <Compile Include="OPIAEntities\Response\StopTimeTable\StopTimeTable.cs" />
-    <Compile Include="OPIAEntities\Response\StopTimeTable\StopTimeTablesResponse.cs" />
-    <Compile Include="OPIAEntities\Response\StopTimeTable\Trip.cs" />
-    <Compile Include="OPIAEntities\Response\TripMapPath\TripMapPathResponse.cs" />
-    <Compile Include="OPIAEntities\Response\Trips\TripsResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\OPIA.API.Contracts\OPIA.API.Contracts.csproj">
+      <Project>{0B1E91B4-E086-475F-8441-77D8E529FCFB}</Project>
+      <Name>OPIA.API.Contracts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

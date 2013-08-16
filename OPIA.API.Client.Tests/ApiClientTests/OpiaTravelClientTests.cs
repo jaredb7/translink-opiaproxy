@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using OPIA.API.Client.Constants;
 using OPIA.API.Client.OpiaApiClients;
-using OPIA.API.Client.OPIAEntities.Request.Travel;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request.Travel;
 
 namespace OPIA.API.Client.Tests.ApiClientTests
 {

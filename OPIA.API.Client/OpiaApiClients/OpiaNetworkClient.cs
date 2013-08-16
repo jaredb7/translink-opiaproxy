@@ -1,12 +1,12 @@
 ﻿using System.Threading.Tasks;
-using OPIA.API.Client.Constants;
-using OPIA.API.Client.OPIAEntities.Request;
-using OPIA.API.Client.OPIAEntities.Response.RouteMapPath;
-using OPIA.API.Client.OPIAEntities.Response.Routes;
-using OPIA.API.Client.OPIAEntities.Response.RouteTimeTable;
-using OPIA.API.Client.OPIAEntities.Response.StopTimeTable;
-using OPIA.API.Client.OPIAEntities.Response.TripMapPath;
-using OPIA.API.Client.OPIAEntities.Response.Trips;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request;
+using OPIA.API.Contracts.OPIAEntities.Response.RouteMapPath;
+using OPIA.API.Contracts.OPIAEntities.Response.Routes;
+using OPIA.API.Contracts.OPIAEntities.Response.RouteTimeTable;
+using OPIA.API.Contracts.OPIAEntities.Response.StopTimeTable;
+using OPIA.API.Contracts.OPIAEntities.Response.TripMapPath;
+using OPIA.API.Contracts.OPIAEntities.Response.Trips;
 
 namespace OPIA.API.Client.OpiaApiClients
 {

@@ -1,8 +1,8 @@
 using System.Net.Http;
 using System.Threading.Tasks;
-using OPIA.API.Client.Constants;
-using OPIA.API.Client.OPIAEntities.Request;
-using OPIA.API.Client.OPIAEntities.Request.Version;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request;
+using OPIA.API.Contracts.OPIAEntities.Request.Version;
 
 namespace OPIA.API.Client.OpiaApiClients
 {

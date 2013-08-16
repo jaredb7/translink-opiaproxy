@@ -37,8 +37,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Net.Http" />
@@ -79,6 +80,10 @@
     <ProjectReference Include="..\OPIA.API.Client\OPIA.API.Client.csproj">
       <Project>{C53BCDE9-9930-4585-A33A-5BA64F1FCEF2}</Project>
       <Name>OPIA.API.Client</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\OPIA.API.Contracts\OPIA.API.Contracts.csproj">
+      <Project>{0B1E91B4-E086-475F-8441-77D8E529FCFB}</Project>
+      <Name>OPIA.API.Contracts</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>

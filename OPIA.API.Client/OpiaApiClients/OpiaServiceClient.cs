@@ -1,5 +1,5 @@
 using System;
-using OPIA.API.Client.Constants;
+using OPIA.API.Contracts.Constants;
 
 namespace OPIA.API.Client.OpiaApiClients
 {

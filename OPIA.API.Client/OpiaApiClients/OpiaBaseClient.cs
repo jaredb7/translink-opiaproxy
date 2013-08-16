@@ -6,8 +6,8 @@ using System.Net.Http.Headers;
 using System.Net.Security;
 using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
-using OPIA.API.Client.Constants;
-using OPIA.API.Client.OPIAEntities.Request;
+using OPIA.API.Contracts.Constants;
+using OPIA.API.Contracts.OPIAEntities.Request;
 
 namespace OPIA.API.Client.OpiaApiClients
 {
@@ -30,7 +30,7 @@ namespace OPIA.API.Client.OpiaApiClients
         /// <summary>
         /// <remarks>'service' has apparently not been exposed as of 2013/08/06</remarks>
         /// </summary>
-        /// <param name="lookupType">Should be one of <see cref="OpiaApiConstants"/></param>
+        /// <param name="lookupType">Should be one of <see cref="OPIA.API.Contracts.Constants.OpiaApiConstants"/></param>
         public OpiaBaseClient(string lookupType)
         {
             if (!OpiaApiConstants.OpiaApiLookupTypes.Contains(lookupType))
@@ -52,7 +52,7 @@ namespace OPIA.API.Client.OpiaApiClients
         /// </summary>
         /// <typeparam name="T1">IRequest containing the API RPC method's parameters</typeparam>
         /// <typeparam name="T2">The type of ResponseEntity model to populate </typeparam>
-        /// <param name="requestEntity">The <see cref="IRequest"/> containing the API RPC method's parameters</param>
+        /// <param name="requestEntity">The <see cref="OPIA.API.Contracts.OPIAEntities.Request.IRequest"/> containing the API RPC method's parameters</param>
         /// <returns>The populated ResponseEntity model</returns>
         public virtual T2 GetApiResult<T1, T2>(T1 requestEntity) where T1 : IRequest
         {
@@ -68,7 +68,7 @@ namespace OPIA.API.Client.OpiaApiClients
         /// </summary>
         /// <typeparam name="T1">IRequest containing the API RPC method's parameters</typeparam>
         /// <typeparam name="T2">The type of ResponseEntity model to populate </typeparam>
-        /// <param name="requestEntity">The <see cref="IRequest"/> containing the API RPC method's parameters</param>
+        /// <param name="requestEntity">The <see cref="OPIA.API.Contracts.OPIAEntities.Request.IRequest"/> containing the API RPC method's parameters</param>
         /// <returns>The populated ResponseEntity model</returns>
         public virtual async Task<T2> GetApiResultAsync<T1, T2>(T1 requestEntity) where T1 : IRequest
         {
