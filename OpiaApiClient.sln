@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{5640A6
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPIA.API.Contracts", "OPIA.API.Contracts\OPIA.API.Contracts.csproj", "{0B1E91B4-E086-475F-8441-77D8E529FCFB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPIA.API.Proxy", "OPIA.API.Proxy\OPIA.API.Proxy.csproj", "{8322424F-75DF-446A-B907-86D7D72FAFA5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{0B1E91B4-E086-475F-8441-77D8E529FCFB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0B1E91B4-E086-475F-8441-77D8E529FCFB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0B1E91B4-E086-475F-8441-77D8E529FCFB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8322424F-75DF-446A-B907-86D7D72FAFA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8322424F-75DF-446A-B907-86D7D72FAFA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8322424F-75DF-446A-B907-86D7D72FAFA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8322424F-75DF-446A-B907-86D7D72FAFA5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
