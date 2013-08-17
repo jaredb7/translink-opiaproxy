@@ -51,6 +51,7 @@
   <ItemGroup>
     <Compile Include="OpiaApiClients\OpiaBaseClient.cs" />
     <Compile Include="OpiaApiClients\OpiaLocationClient.cs" />
+    <Compile Include="OpiaApiClients\OpiaLocationClientAsync.cs" />
     <Compile Include="OpiaApiClients\OpiaNetworkClient.cs" />
     <Compile Include="OpiaApiClients\OpiaNetworkClientAsync.cs" />
     <Compile Include="OpiaApiClients\OpiaServiceClient.cs" />
