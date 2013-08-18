@@ -148,6 +148,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="App_Start\WindsorContainerConfig.cs" />
+    <Compile Include="Controllers\VersionController.cs" />
+    <Compile Include="Controllers\TravelController.cs" />
     <Compile Include="Controllers\LocationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NetworkController.cs" />
