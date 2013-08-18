@@ -29,6 +29,7 @@ namespace OPIA.API.Proxy.Controllers
         /// </summary>
         /// <returns>The current version API ("\"1.0\"")</returns>
         /// <exception cref="HttpRequestException">An HttpRequestException containing an HTTP error response (e.g. 404, 403, etc.)</exception>
+        [HttpGet]
         public async Task<HttpResponseMessage> GetCurrentApiVersion()
         {
             var versionClient = new OpiaVersionClient();
@@ -43,7 +44,7 @@ namespace OPIA.API.Proxy.Controllers
         /// </summary>
         /// <returns>The current version API ("\"1.0\"")</returns>
         /// <exception cref="HttpRequestException">An HttpRequestException containing an HTTP error response (e.g. 404, 403, etc.)</exception>
-        [HttpPost]
+        [HttpGet]
         public async Task<HttpResponseMessage> GetCurrentApiBuildVersion(PlanUrlRequest request)
         {
             var versionClient = new OpiaVersionClient();

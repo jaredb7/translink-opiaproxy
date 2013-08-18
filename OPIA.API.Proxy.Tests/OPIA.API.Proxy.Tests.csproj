@@ -59,10 +59,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="ProxyTests\ProxyVersionControllerMethodsTests.cs" />
+    <Compile Include="ProxyTests\ProxyTravelControllerMethodsTests.cs" />
     <Compile Include="ProxyTests\ProxyLocationControllerMethodsTests.cs" />
     <Compile Include="ProxyTests\ProxyNetworkControllerMethodsTests.cs" />
-    <Compile Include="ProxyTests\OpiaTravelClientTests.cs" />
-    <Compile Include="ProxyTests\OpiaVersionClientTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
