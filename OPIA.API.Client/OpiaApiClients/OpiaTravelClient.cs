@@ -1,4 +1,3 @@
-using System.Threading.Tasks;
 using OPIA.API.Contracts.Constants;
 using OPIA.API.Contracts.OPIAEntities.Request;
 using OPIA.API.Contracts.OPIAEntities.Response.Plan;
@@ -8,15 +7,14 @@ namespace OPIA.API.Client.OpiaApiClients
 {
     /// Abstraction/Facade client layer for interfacing with the actual Opia API method calls. Allows
     /// us to change names, add functionality, etc.
-    public class OpiaTravelClient : OpiaBaseClient
+    public partial class OpiaTravelClient : OpiaBaseClient
     {
-
         //GET /travel/rest/plan/{fromLocationId}/{toLocationId} Generates travel plans between two locations
         //GET /travel/rest/plan-url/{fromLocationId}/{toLocationId} Generates a URL to Translink's Journey Planner which suggests possible journeys
 
-        public OpiaTravelClient(): base(OpiaApiConstants.TravelAPI)
-        {
 
+        public OpiaTravelClient() : base(OpiaApiConstants.LocationAPI)
+        {
         }
 
         /// <summary>
@@ -31,17 +29,6 @@ namespace OPIA.API.Client.OpiaApiClients
         }
 
         /// <summary>
-        /// Generates travel plans between two locations
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public async Task<PlanResponse> GetPlanAsync(IRequest request)
-        {
-            var result = await this.GetApiResultAsync<IRequest, PlanResponse>(request);
-            return result;
-        }
-
-        /// <summary>
         /// Generates a URL to Translink's Journey Planner which suggests possible journeys
         /// </summary>
         /// <param name="request"></param>
@@ -49,17 +36,6 @@ namespace OPIA.API.Client.OpiaApiClients
         public PlanUrlResponse GetPlanUrl(IRequest request)
         {
             var result = this.GetApiResult<IRequest, PlanUrlResponse>(request);
-            return result;
-        }
-
-        /// <summary>
-        /// Generates a URL to Translink's Journey Planner which suggests possible journeys
-        /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        public async Task<PlanUrlResponse> GetPlanUrlAsync(IRequest request)
-        {
-            var result = await this.GetApiResultAsync<IRequest, PlanUrlResponse>(request);
             return result;
         }
     }
