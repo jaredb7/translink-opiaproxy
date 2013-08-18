@@ -13,7 +13,7 @@ namespace OPIA.API.Client.OpiaApiClients
         //GET /travel/rest/plan-url/{fromLocationId}/{toLocationId} Generates a URL to Translink's Journey Planner which suggests possible journeys
 
 
-        public OpiaTravelClient() : base(OpiaApiConstants.LocationAPI)
+        public OpiaTravelClient() : base(OpiaApiConstants.TravelAPI)
         {
         }
 
