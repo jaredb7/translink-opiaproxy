@@ -32,7 +32,7 @@ namespace OPIA.API.Proxy.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<HttpResponseMessage> GetPlanAsync(PlanRequest request)
+        public async Task<HttpResponseMessage> GetPlan(PlanRequest request)
         {
             var travelClient = new OpiaTravelClient();
             var result = await travelClient.GetApiResultAsync<IRequest, PlanResponse>(request);
@@ -46,7 +46,7 @@ namespace OPIA.API.Proxy.Controllers
         /// <param name="request"></param>
         /// <returns></returns>
         [HttpPost]
-        public async Task<HttpResponseMessage> GetPlanUrlAsync(PlanUrlRequest request)
+        public async Task<HttpResponseMessage> GetPlanUrl(PlanUrlRequest request)
         {
             var travelClient = new OpiaTravelClient();
             var result = await travelClient.GetApiResultAsync<IRequest, PlanUrlResponse>(request);

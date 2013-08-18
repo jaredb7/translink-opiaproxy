@@ -6,6 +6,7 @@ using Castle.Core.Logging;
 using OPIA.API.Client.OpiaApiClients;
 using OPIA.API.Contracts.OPIAEntities.Request;
 using OPIA.API.Contracts.OPIAEntities.Request.Travel;
+using OPIA.API.Contracts.OPIAEntities.Request.Version;
 using OPIA.API.Contracts.OPIAEntities.Response.Plan;
 using OPIA.API.Contracts.OPIAEntities.Response.PlanUrl;
 
@@ -13,11 +14,8 @@ namespace OPIA.API.Proxy.Controllers
 {
 
     /// <summary>
-    /// Controller proxy/facade for external clients. 
-    /// We're attributing "Get" methods with "HttpPost" because it's easier to post the 
-    /// objects from an external client than to translate query strings back into objects,
-    /// only to fire them off again, simply to satisfy the Web Api naming conventions. 
-    /// It allows us to share the data object contracts.
+    /// Controller proxy/facade for external clients to check version and build informatio on
+    /// the OPIA API - basically for diagnostics purposes. 
     /// </summary>
     public class VersionController : ApiController
     {
@@ -27,29 +25,29 @@ namespace OPIA.API.Proxy.Controllers
         public ILogger Logger { get; set; }
 
         /// <summary>
-        /// Generates travel plans between two locations
+        /// Hits the 'api' RPC command 
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
-        [HttpPost]
-        public async Task<HttpResponseMessage> GetPlanAsync(PlanRequest request)
+        /// <returns>The current version API ("\"1.0\"")</returns>
+        /// <exception cref="HttpRequestException">An HttpRequestException containing an HTTP error response (e.g. 404, 403, etc.)</exception>
+        public async Task<HttpResponseMessage> GetCurrentApiVersion()
         {
-            var travelClient = new OpiaTravelClient();
-            var result = await travelClient.GetApiResultAsync<IRequest, PlanResponse>(request);
+            var versionClient = new OpiaVersionClient();
+            var result = await versionClient.GetApiResultAsync<IRequest, string>(new ApiVersionRequest());
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
 
         /// <summary>
-        /// Generates a URL to Translink's Journey Planner which suggests possible journeys
+        /// This should only be used to get the build version when reporting defects; has
+        /// apparently no bearing on the actual API version. Just used for diagnostic purposes
         /// </summary>
-        /// <param name="request"></param>
-        /// <returns></returns>
+        /// <returns>The current version API ("\"1.0\"")</returns>
+        /// <exception cref="HttpRequestException">An HttpRequestException containing an HTTP error response (e.g. 404, 403, etc.)</exception>
         [HttpPost]
-        public async Task<HttpResponseMessage> GetPlanUrlAsync(PlanUrlRequest request)
+        public async Task<HttpResponseMessage> GetCurrentApiBuildVersion(PlanUrlRequest request)
         {
-            var travelClient = new OpiaTravelClient();
-            var result = await travelClient.GetApiResultAsync<IRequest, PlanUrlResponse>(request);
+            var versionClient = new OpiaVersionClient();
+            var result = await versionClient.GetApiResultAsync<IRequest, string>(new BuildVersionRequest());
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
