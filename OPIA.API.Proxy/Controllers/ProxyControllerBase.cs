@@ -41,12 +41,12 @@ namespace OPIA.API.Proxy.Controllers
                                                                                  where T2 : IResponse
         {
             var key = GetRequestHash(request);
-            await Cache.InsertObject<T2>(key, response, DateTime.Now.AddSeconds(60));
+            await Cache.InsertObject<T2>(key, response, TimeSpan.FromSeconds(30));
         }
 
         protected async Task StoreResultInCache(IRequest request, string response)
         {
-            await Cache.InsertObject(GetRequestHash(request), response, TimeSpan.FromSeconds(10));
+            await Cache.InsertObject(GetRequestHash(request), response, TimeSpan.FromSeconds(30));
         }
 
         private static string GetRequestHash(IRequest request)
