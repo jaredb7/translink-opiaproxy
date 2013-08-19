@@ -4,7 +4,14 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using Castle.Core.Logging;
 using OPIA.API.Client.OpiaApiClients;
+using OPIA.API.Contracts.OPIAEntities.Request;
 using OPIA.API.Contracts.OPIAEntities.Request.Network;
+using OPIA.API.Contracts.OPIAEntities.Response.RouteMapPath;
+using OPIA.API.Contracts.OPIAEntities.Response.Routes;
+using OPIA.API.Contracts.OPIAEntities.Response.RouteTimeTable;
+using OPIA.API.Contracts.OPIAEntities.Response.StopTimeTable;
+using OPIA.API.Contracts.OPIAEntities.Response.TripMapPath;
+using OPIA.API.Contracts.OPIAEntities.Response.Trips;
 
 namespace OPIA.API.Proxy.Controllers
 {
@@ -16,18 +23,18 @@ namespace OPIA.API.Proxy.Controllers
     /// only to fire them off again, simply to satisfy the Web Api naming conventions. 
     /// It allows us to share the data object contracts.
     /// </summary>
-    public class NetworkController : ApiController
+    public class NetworkController : ProxyControllerBase
     {
-        /// <summary>
-        /// Injected by IoC container for logging purposes
-        /// </summary>
-        public ILogger Logger { get; set; }
-
         [HttpPost]
         public async Task<HttpResponseMessage> GetRouteTimeTables(RouteTimeTablesRequest request)
         {
-            var networkRequestClient = new OpiaNetworkClient();
-            var result = await networkRequestClient.GetRouteTimeTablesAsync(request);
+            var result = CheckCacheForEntry<IRequest, RouteTimeTablesResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaNetworkClient().GetRouteTimeTablesAsync(request);
+                await StoreResultInCache<IRequest, RouteTimeTablesResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -35,8 +42,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetStopTimeTables(StopTimeTablesRequest request)
         {
-            var networkRequestClient = new OpiaNetworkClient();
-            var result = await networkRequestClient.GetStopTimeTablesAsync(request);
+            var result = CheckCacheForEntry<IRequest, StopTimeTablesResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaNetworkClient().GetStopTimeTablesAsync(request);
+                await StoreResultInCache<IRequest, StopTimeTablesResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -44,8 +56,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetTrips(TripsRequest request)
         {
-            var networkRequestClient = new OpiaNetworkClient();
-            var result = await networkRequestClient.GetTripsAsync(request);
+            var result = CheckCacheForEntry<IRequest, TripsResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaNetworkClient().GetTripsAsync(request);
+                await StoreResultInCache<IRequest, TripsResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -53,8 +70,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetTripMapPath(TripMapPathRequest request)
         {
-            var networkRequestClient = new OpiaNetworkClient();
-            var result = await networkRequestClient.GetTripMapPathAsync(request);
+            var result = CheckCacheForEntry<IRequest, TripMapPathResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaNetworkClient().GetTripMapPathAsync(request);
+                await StoreResultInCache<IRequest, TripMapPathResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -62,8 +84,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetRouteMapPath(RouteMapPathRequest request)
         {
-            var networkRequestClient = new OpiaNetworkClient();
-            var result = await networkRequestClient.GetRouteMapPathAsync(request);
+            var result = CheckCacheForEntry<IRequest, RouteMapPathResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaNetworkClient().GetRouteMapPathAsync(request);
+                await StoreResultInCache<IRequest, RouteMapPathResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -71,8 +98,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetRoutes(RoutesRequest request)
         {
-            var networkRequestClient = new OpiaNetworkClient();
-            var result = await networkRequestClient.GetRoutesAsync(request);
+            var result = CheckCacheForEntry<IRequest, RoutesResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaNetworkClient().GetRoutesAsync(request);
+                await StoreResultInCache<IRequest, RoutesResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }

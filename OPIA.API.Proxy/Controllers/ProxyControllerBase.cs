@@ -31,8 +31,8 @@ namespace OPIA.API.Proxy.Controllers
         {
             var result = default(T2);
             string key = GetRequestHash(request);
-            Cache.GetObjectAsync<T2>(key).Subscribe(r => result = r, ex => Logger.DebugFormat("No key matching {0}", request.ToString()));
-            //Debug.WriteLine("{0} {1}", typeof(T2).Name, result == null ? "not in cache" : "item was cached!");
+            Cache.GetObjectAsync<T2>(key).Subscribe(r => result = r, ex => Debug.WriteLine(string.Format("No key matching {0}", request.ToString())));
+            Debug.WriteLine("{0} {1}", typeof(T2).Name, result == null ? "not in cache" : "item was cached!");
             Logger.DebugFormat("{0} {1}", typeof(T2).Name, result == null ? "not in cache" : "item was cached!");
             return result;
         }
