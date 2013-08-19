@@ -1,13 +1,15 @@
-﻿using System.Net;
+﻿using System;
+using System.Diagnostics;
+using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
-using Castle.Core.Logging;
 using OPIA.API.Client.OpiaApiClients;
 using OPIA.API.Contracts.OPIAEntities.Request;
 using OPIA.API.Contracts.OPIAEntities.Request.Location;
-using OPIA.API.Contracts.OPIAEntities.Request.Network;
+using OPIA.API.Contracts.OPIAEntities.Response;
 using OPIA.API.Contracts.OPIAEntities.Response.Locations;
+using OPIA.API.Contracts.OPIAEntities.Response.Resolve;
 using OPIA.API.Contracts.OPIAEntities.Response.Stops;
 using OPIA.API.Contracts.OPIAEntities.Response.StopsAtLandmark;
 using OPIA.API.Contracts.OPIAEntities.Response.StopsNearby;
@@ -22,12 +24,8 @@ namespace OPIA.API.Proxy.Controllers
     /// only to fire them off again, simply to satisfy the Web Api naming conventions. 
     /// It allows us to share the data object contracts.
     /// </summary>
-    public class LocationController : ApiController
+    public class LocationController : ProxyControllerBase
     {
-        /// <summary>
-        /// Injected by IoC container for logging purposes
-        /// </summary>
-        public ILogger Logger { get; set; }
 
         /// <summary>
         /// Attempts to resolves free-form text into a an address, stop, landmark, etc.
@@ -37,11 +35,18 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> Resolve(ResolveRequest request)
         {
-            var locationClient = new OpiaLocationClient();
-            var result = await locationClient.ResolveAsync(request);
+            var result = CheckCacheForEntry<IRequest, ResolveResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaLocationClient().ResolveAsync(request);
+                await StoreResultInCache<IRequest, ResolveResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
+
+
 
         /// <summary>
         /// Retrieves a list of Stops located at a Landmark
@@ -51,8 +56,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetStopsAtLandmark(StopsAtLandmarkRequest request)
         {
-            var locationClient = new OpiaLocationClient();
-            var result = await locationClient.GetStopsAtLandmarkAsync(request);
+            var result = CheckCacheForEntry<IRequest, StopsAtLandmarkResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaLocationClient().GetStopsAtLandmarkAsync(request);
+                await StoreResultInCache<IRequest, StopsAtLandmarkResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -65,8 +75,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetStopsNearby(StopsNearbyRequest request)
         {
-            var locationClient = new OpiaLocationClient();
-            var result = await locationClient.GetStopsNearbyAsync(request);
+            var result = CheckCacheForEntry<IRequest, StopsNearbyResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaLocationClient().GetStopsNearbyAsync(request);
+                await StoreResultInCache<IRequest, StopsNearbyResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -79,8 +94,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetStopsByIds(StopsRequest request)
         {
-            var locationClient = new OpiaLocationClient();
-            var result = await locationClient.GetStopsByIdsAsync(request);
+            var result = CheckCacheForEntry<IRequest, StopsResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaLocationClient().GetStopsByIdsAsync(request);
+                await StoreResultInCache<IRequest, StopsResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -93,8 +113,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetLocationsByIds(LocationsRequest request)
         {
-            var locationClient = new OpiaLocationClient();
-            var result = await locationClient.GetLocationsByIdsAsync(request);
+            var result = CheckCacheForEntry<IRequest, LocationsResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaLocationClient().GetLocationsByIdsAsync(request);
+                await StoreResultInCache<IRequest, LocationsResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }

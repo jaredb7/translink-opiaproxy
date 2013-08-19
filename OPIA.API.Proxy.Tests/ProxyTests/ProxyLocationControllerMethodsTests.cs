@@ -53,6 +53,8 @@ namespace OPIA.API.Proxy.Tests.ProxyTests
             var response = _client.PostAsJsonAsync("location/resolve", requestEntity).Result;
             response.EnsureSuccessStatusCode();
             var result = response.Content.ReadAsAsync<ResolveResponse>().Result;
+
+
             Assert.IsTrue(result.Locations.Any());
         }
 
