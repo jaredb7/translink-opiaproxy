@@ -2,7 +2,7 @@
 
 namespace OPIA.API.Contracts.OPIAEntities.Response.Trips
 {
-    public class TripsResponse
+    public class TripsResponse : IResponse
     {
         public Trip[] Trips { get; set; }
     }

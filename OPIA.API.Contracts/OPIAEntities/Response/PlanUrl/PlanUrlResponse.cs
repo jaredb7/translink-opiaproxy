@@ -1,6 +1,6 @@
 ﻿namespace OPIA.API.Contracts.OPIAEntities.Response.PlanUrl
 {
-    public class PlanUrlResponse
+    public class PlanUrlResponse : IResponse
     {
         public string JourneyPlannerUrl { get; set; }
     }

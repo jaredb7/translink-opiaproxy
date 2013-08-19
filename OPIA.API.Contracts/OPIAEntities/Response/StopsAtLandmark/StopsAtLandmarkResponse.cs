@@ -2,7 +2,7 @@
 
 namespace OPIA.API.Contracts.OPIAEntities.Response.StopsAtLandmark
 {
-    public class StopsAtLandmarkResponse
+    public class StopsAtLandmarkResponse : IResponse
     {
         Location[] Locations { get; set; }
     }

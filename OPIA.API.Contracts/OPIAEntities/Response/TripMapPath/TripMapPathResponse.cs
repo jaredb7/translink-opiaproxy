@@ -1,6 +1,6 @@
 ﻿namespace OPIA.API.Contracts.OPIAEntities.Response.TripMapPath
 {
-    public class TripMapPathResponse
+    public class TripMapPathResponse : IResponse
     {
         /// <summary>
         /// This string is a map path encoded in polyline format. It looks something like:

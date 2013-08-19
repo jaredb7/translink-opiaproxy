@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <PlatformTarget>AnyCPU</PlatformTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -68,6 +69,7 @@
     <Compile Include="OPIAEntities\Request\Travel\PlanUrlRequest.cs" />
     <Compile Include="OPIAEntities\Request\Version\ApiVersionRequest.cs" />
     <Compile Include="OPIAEntities\Request\Version\BuildVersionRequest.cs" />
+    <Compile Include="OPIAEntities\Response\IResponse.cs" />
     <Compile Include="OPIAEntities\Response\Common\Position.cs" />
     <Compile Include="OPIAEntities\Response\Common\Route.cs" />
     <Compile Include="OPIAEntities\Response\Common\Trip.cs" />
