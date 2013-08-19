@@ -19,12 +19,8 @@ namespace OPIA.API.Proxy.Controllers
     /// only to fire them off again, simply to satisfy the Web Api naming conventions. 
     /// It allows us to share the data object contracts.
     /// </summary>
-    public class TravelController : ApiController
+    public class TravelController : ProxyControllerBase
     {
-        /// <summary>
-        /// Injected by IoC container for logging purposes
-        /// </summary>
-        public ILogger Logger { get; set; }
 
         /// <summary>
         /// Generates travel plans between two locations
@@ -34,8 +30,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetPlan(PlanRequest request)
         {
-            var travelClient = new OpiaTravelClient();
-            var result = await travelClient.GetApiResultAsync<IRequest, PlanResponse>(request);
+            var result = CheckCacheForEntry<IRequest, PlanResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaTravelClient().GetPlanAsync(request);
+                await StoreResultInCache<IRequest, PlanResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }
@@ -48,8 +49,13 @@ namespace OPIA.API.Proxy.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetPlanUrl(PlanUrlRequest request)
         {
-            var travelClient = new OpiaTravelClient();
-            var result = await travelClient.GetApiResultAsync<IRequest, PlanUrlResponse>(request);
+            var result = CheckCacheForEntry<IRequest, PlanUrlResponse>(request);
+            if (result == null)
+            {
+                Logger.DebugFormat("Getting {0} from web: ", request.ToString());
+                result = await new OpiaTravelClient().GetPlanUrlAsync(request);
+                await StoreResultInCache<IRequest, PlanUrlResponse>(request, result);
+            }
             var response = Request.CreateResponse(HttpStatusCode.OK, result);
             return response;
         }

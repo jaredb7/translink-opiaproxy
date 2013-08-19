@@ -47,7 +47,7 @@ namespace OPIA.API.Proxy.Tests.ProxyTests
                 FromLocationId = "SI:000026",
                 ToLocationId = "AD:80 Mary St, City",
                 VehicleTypes = new List<VehicleType>() { VehicleType.Bus, VehicleType.Train },
-                DateAndTime = DateTime.Now.AddDays(1),
+                DateAndTime = DateTime.Now.AddDays(1), // ensures response will never be cached, as time moves in lock-step with .Now
                 MaximumWalkingDistanceM = 500,
                 ServiceTypes = new List<ServiceType>() { ServiceType.Regular, ServiceType.Express },
                 FareTypes = new List<FareType>() { FareType.Standard, FareType.Prepaid, FareType.Free },
@@ -70,7 +70,7 @@ namespace OPIA.API.Proxy.Tests.ProxyTests
                 FromLocationId = "SI:000026",
                 ToLocationId = "AD:80 Mary St, City",
                 VehicleTypes = new List<VehicleType>() { VehicleType.Bus, VehicleType.Train, VehicleType.Walk },
-                DateAndTime = DateTime.Now.AddDays(1),
+                DateAndTime = DateTime.Now.AddDays(1), // ensures response will never be cached, as time moves in lock-step with .Now
                 MaximumWalkingDistanceM = 500,
                 ServiceTypes = new List<ServiceType>() { ServiceType.Regular, ServiceType.Express },
                 FareTypes = new List<FareType>() { FareType.Standard, FareType.Prepaid, FareType.Free },
