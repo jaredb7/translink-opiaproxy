@@ -33,3 +33,4 @@ OPIA.API.Proxy/*.Errors.log.*
 */Logs/*.log.*
 OPIA.API.Proxy/packages/*
 OPIA.API.Proxy/*.log
+ConsoleApplication1/*
