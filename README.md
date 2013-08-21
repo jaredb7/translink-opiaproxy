@@ -8,8 +8,12 @@ It provides information related to stops, trips, landmarks, and address-lookups,
 
 **OpiaProxy** takes the hard work out of using the OPIA API, and then it just gets out of your way, so that you can build your applications without worrying too much about the plumbing.
 
+_(For a look at the API and its capabilities, have a look at https://opia.api.translink.com.au/v1/content/swaggerui/index.aspx. 
+You'll need a TransLink login to actually test the methods and use their API, but that's where this project can help
+)_
+
 Normally you'd need your own set of login/password credentials from TransLink to hit this API directly, and you'll still need them **if you are planning on hosting your own proxy**, perhaps by forking your own copy of this one. 
-Alternatively, you can use the Azure shared instance I've set up for it (see details below). But if traffic or requests become too heavy, I'll have to move it to a dedicated instance and start charging a few bucks a month for it. I'm an indie developer when not at my day job, and it doesn't always pay well, if at all :).
+Alternatively, you can use the Azure shared instance I've set up for it (see details below). Please keep in mind that if traffic becomes too heavy, I'll have to move it to a dedicated instance and start charging a few bucks a month for it. I may have to do that anyway if it becomes popular, which would be great, I'm an indie developer when not at my day job, and it doesn't always pay well (sometimes not at all :)).
 
 ## Why would I use it?
 - The short answer: Build mobile, web and desktop applications quickly and easily, backed by TransLink's journey-planning and public transport scheduling infrastructure.
