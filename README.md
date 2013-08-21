@@ -40,14 +40,14 @@ with other systems...
 - `OPIA.API.Proxy.Tests` - Some integration tests that exercise the `OPIA.API.Proxy` Web API controller methods by actually hitting the running application. You'll very quickly be able to see the possibilities by at these tests.
 
 ## How do I get started?
-- Have a look at the sample console application to see how it connects, makes a request, and manipulates the results. There's also some source code available as LinqPad script(s). See the **Samples\Scripts** folder. If you don't know what LinqPad is, you should try it (http://www.linqpad.net/). It's awesome. You can open the script(s) in a text editor tho.
+- Have a look at the sample console application to see how it connects, makes a request, and manipulates the results. There's also some source code available as LinqPad script(s). See the **Samples\LinqPad** folder. If you don't know what LinqPad is, you should try it (http://www.linqpad.net/). It's awesome. You can open the script(s) in a text editor tho.
 
     If using LinqPad, remember to add the `MS Web API Client` NuGet package, and a reference to the `OPIA.API.Contracts` assembly DLL.
 - There's an instance of the `OPIA.API.Proxy` Web API service running on an **Azure shared instance** at http://playopia.azurewebsites.net for demo and basic testing purposes, which you can hit using the sample code (samples are configured to use it by default). 
 
     *Please bear in mind it is a minimally spec'd Azure instance, so it may be a little slow if no one's used it in a while, or if lots of people are busy using it. If there's enough interest, or it starts to buckle, I'll move it across to a dedicated instance. That would mean I'll probably have to start charging a couple of bucks a month, in that case, but we'll see how we go...*
 
-Results between your client and this proxy are running over HTTP, and **are not encrypted** (or at least not yet, though communications between the proxy and TransLink's OPIA service are). This is just because I've not got around to making and putting an SSL certificate up there. Sometime soon tho! 
+Traffic between your client and **this** proxy are running over HTTP, and **are currently not encrypted** (or at least not yet, though communications between **OpiaProxy** and TransLink's OPIA service are). This is just because I've not yet set up an SSL certificate and put it up there. Sometime soon tho! 
 
 - As I build out improvements to the proxy, I'll be pushing those up, and it'll be restarting, so it may be out of action occasionally. If it's not responding, or 404, just wait a few minutes and try again.
 
