@@ -1,7 +1,7 @@
 translink-opiaproxy
 ===================
 
-Built using .NET Web API - A caching web proxy and clients for the TransLink OPIA REST API service.
+A caching web proxy and clients for the TransLink OPIA REST API service (Built using ASP.NET Web API).
 
 TransLink has provided access to their journey-planning and other public-transport related information by means of their OPIA API. 
 It provides information related to stops, trips, landmarks, and address-lookups, and lets you work out how to get from one place to another using Brisbane's public transport system. The API is exposed via an authenticated, SSL-encrypted REST-over-HTTP API. 
