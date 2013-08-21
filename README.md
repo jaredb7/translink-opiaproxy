@@ -8,7 +8,7 @@ It provides information related to stops, trips, landmarks, and address-lookups,
 
 **OpiaProxy** takes the hard work out of using the OPIA API, and then it just gets out of your way, so that you can build your applications without worrying too much about the plumbing.
 
-Normally you'd need your own set of login/password credentials from TransLink to hit this API directly, and you'll still need them **if you are planning on hosting your own proxy, perhaps by forking your own copy of this one**. 
+Normally you'd need your own set of login/password credentials from TransLink to hit this API directly, and you'll still need them **if you are planning on hosting your own proxy**, perhaps by forking your own copy of this one. 
 Alternatively, you can use the Azure shared instance I've set up for it (see details below). But if traffic or requests become too heavy, I'll have to move it to a dedicated instance and start charging a few bucks a month for it. I'm an indie developer when not at my day job, and it doesn't always pay well, if at all :).
 
 ## Why would I use it?
