@@ -72,7 +72,7 @@ Results between your client and this proxy are running over HTTP, and **are not 
 7. You can then extract the info you were after, and if necessary use it to build and fire off another, different, request to get related information.
 
 Have a look at the `OPIA.API.Proxy.Tests\ProxyTests\ProxyXXXControllerMethodsTests.cs` code to see the kinds of requests you can make, and the kind of information that comes back. 
-There's sldo some LinqPad code in the Samples directory, which exercises Location-based controller methods from a running proxy. LinqPad has an awesome `blah.Dump()` feature which gives you a great visual representation of what the objects look like. 
+There's also some LinqPad scripts in the Samples directory, which exercise Location-based controller methods from a running proxy. LinqPad has an awesome `blah.Dump()` feature which gives you a great visual representation of what the objects look like. 
 
 ## A simple example
 
