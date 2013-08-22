@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Translink-OpiaProxy : Caching Proxy and Easy-To-Use Clients for Translink's OPIA REST API" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Translink-OpiaProxy</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/wislon/translink-opiaproxy">View on GitHub</a>
+
+          <h1 id="project_title">Translink-OpiaProxy</h1>
+          <h2 id="project_tagline">Caching Proxy and Easy-To-Use Clients for Translink's OPIA REST API</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/wislon/translink-opiaproxy/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/wislon/translink-opiaproxy/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="translink-opiaproxy" class="anchor" href="#translink-opiaproxy"><span class="octicon octicon-link"></span></a>translink-opiaproxy</h1>
+
+<p>A caching web proxy and clients for the TransLink OPIA REST API service (built using ASP.NET Web API).</p>
+
+<p>TransLink has provided access to their journey-planning and other public-transport related information by means of their OPIA API. 
+It provides information related to stops, trips, landmarks, and address-lookups, and lets you work out how to get from one place to another using Brisbane's public transport system. The API is exposed via an authenticated, SSL-encrypted REST-over-HTTP API. </p>
+
+<p><strong>OpiaProxy</strong> takes the hard work out of using the OPIA API, and then it just gets out of your way, so that you can build your applications without worrying too much about the plumbing.</p>
+
+<p><em>(For a look at the API and its capabilities, have a look at <a href="https://opia.api.translink.com.au/v1/content/swaggerui/index.aspx">https://opia.api.translink.com.au/v1/content/swaggerui/index.aspx</a>. 
+You'll need a TransLink login to actually test the methods and use their API, but that's where this project can help
+)</em></p>
+
+<p>Normally you'd need your own set of login/password credentials from TransLink to hit this API directly, and you'll still need them <strong>if you are planning on hosting your own proxy</strong>, perhaps by forking your own copy of this one. 
+Alternatively, you can use the Azure shared instance I've set up for it (see details below). Please keep in mind that if traffic becomes too heavy, I'll have to move it to a dedicated instance and start charging a few bucks a month for it. I may have to do that anyway if it becomes popular, which would be great, I'm an indie developer when not at my day job, and it doesn't always pay well (sometimes not at all :)).</p>
+
+<h2>
+<a name="why-would-i-use-it" class="anchor" href="#why-would-i-use-it"><span class="octicon octicon-link"></span></a>Why would I use it?</h2>
+
+<ul>
+<li>The short answer: Build mobile, web and desktop applications quickly and easily, backed by TransLink's journey-planning and public transport scheduling infrastructure.</li>
+<li>Quick and <strong>easy</strong> authenticated access to the OPIA API REST service. No handing over your OPIA authentication credentials to clients, or embedding them in applications.</li>
+<li>It's written using ASP.NET Web API, using JSON for data transfer, so information can be sent and received agnostically (you could hit it with an AJAX request, for example)</li>
+<li>It uses .NET's built-in model-binding to provide strongly-typed objects representing the data, both to and from the API. This allows you to use LINQ and IQueryable/IEnumerable to build and manage relationships between data objects, and derive new ones</li>
+<li>Data objects arrive serialised to JSON to begin with, and they exactly match the structure of the OPIA API (this is a proxy, after all). </li>
+<li>Easily portable to Xamarin/MonoTouch, so it's incredibly easy to build native mobile applications (sample app to come)</li>
+<li>Built-in caching of requests and responses (using <a href="https://github.com/github/akavache">Akavache</a> ), with configurable cache TTL. Easily swappable via IoC if you decide you want to use a different caching engine. Empirically testing the delivery of cached responses using this proxy is 4x-8x faster (on average) than querying the OPIA service for the same information repeatedly.</li>
+<li>Extensible - Add your own controllers and methods, make new objects, swap out the caching mechanism, mash up the public transport information
+with other systems... </li>
+<li>It's Open Source. Don't like something? Fork it, fix it. Make it better. Make it do what YOU want it to do. </li>
+<li>If you have an improvement that you think will benefit everyone, by all means submit a pull request.</li>
+<li>Found a bug? Fix it and submit a pull request. It'll help if you can submit a failed/passed test as well, to add to the test suite in the solution.</li>
+</ul><h2>
+<a name="what-are-all-the-bits" class="anchor" href="#what-are-all-the-bits"><span class="octicon octicon-link"></span></a>What are all the bits?</h2>
+
+<ul>
+<li>
+<p><code>OPIA.API.Client</code> - This handles all the communications between the <code>OPIA.API.Proxy</code> and the TransLink OPIA API service. It does the authentication (which requires your OPIA API login credentials, if you don't have these, see below) and handles the SSL encryption, as well as making the requests, handling the responses, and doing the (de)serialisation and automatic model-binding in between.</p>
+
+<p><em>The various REST-related clients in here will be updated very soon, so that they can be used to hit the <code>OPIA.API.Proxy</code> itself. This is so that it you can use them directly by your application (minus the TransLink auth tokens).</em></p>
+</li>
+<li><p><code>OPIA.API.Client.Tests</code> - Unit/Integration tests to ensure that the requests and query parameters are generated correctly, and to exercise the actual <code>OPIA.API.Client</code> libraries against TransLink's OPIA API service.</p></li>
+<li><p><code>OPIA.API.Contracts</code> - Common data objects and Request/Response objects for everything. The kind of think that will end up in a portable class library, eventually.</p></li>
+<li><p><code>OPIA.API.Proxy</code> - The actual proxy engine, hosted within an ASP.NET Web API application. There's no reason this can't be modified to be self-hosted or hosted in something like OWIN for example. It's really very basic.</p></li>
+<li><p><code>OPIA.API.Proxy.Tests</code> - Some integration tests that exercise the <code>OPIA.API.Proxy</code> Web API controller methods by actually hitting the running application. You'll very quickly be able to see the possibilities by at these tests.</p></li>
+</ul><h2>
+<a name="how-do-i-get-started" class="anchor" href="#how-do-i-get-started"><span class="octicon octicon-link"></span></a>How do I get started?</h2>
+
+<ul>
+<li><p>In order to build it, you'll need to <strong>enable NuGet package restore</strong> first, so that VS can automatically download missing dependencies.</p></li>
+<li>
+<p>Have a look at the sample console application to see how it connects, makes a request, and manipulates the results. There's also some source code available as LinqPad script(s). See the <strong>Samples\LinqPad</strong> folder. If you don't know what LinqPad is, you should try it (<a href="http://www.linqpad.net/">http://www.linqpad.net/</a>). It's awesome. You can open the script(s) in a text editor tho.</p>
+
+<p>If using LinqPad, remember to add the <code>MS Web API Client</code> NuGet package, and a reference to the <code>OPIA.API.Contracts</code> assembly DLL.</p>
+</li>
+<li>
+<p>There's an instance of the <code>OPIA.API.Proxy</code> Web API service running on an <strong>Azure shared instance</strong> at <a href="http://playopia.azurewebsites.net">http://playopia.azurewebsites.net</a> for demo and basic testing purposes, which you can hit using the sample code (samples are configured to use it by default). </p>
+
+<p><em>Please bear in mind it is a minimally spec'd Azure instance, so it may be a little slow if no one's used it in a while, or if lots of people are busy using it. If there's enough interest, or it starts to buckle, I'll move it across to a dedicated instance. That would mean I'll probably have to start charging a couple of bucks a month, in that case, but we'll see how we go...</em></p>
+</li>
+</ul><p>Traffic between your client and <strong>this</strong> proxy are running over HTTP, and <strong>are currently not encrypted</strong> (or at least not yet, though communications between <strong>OpiaProxy</strong> and TransLink's OPIA service are). This is just because I've not yet set up an SSL certificate and put it up there. Sometime soon tho! </p>
+
+<ul>
+<li><p>As I build out improvements to the proxy, I'll be pushing those up, and it'll be restarting, so it may be out of action occasionally. If it's not responding, or 404, just wait a few minutes and try again.</p></li>
+<li><p>There'll be a simple Xamarin.Android application along shortly too, to show how easy it is to build a native application for Android (or devices which support MonoTouch e.g. iPhone, iPad).</p></li>
+</ul><h2>
+<a name="how-does-it-work-easy" class="anchor" href="#how-does-it-work-easy"><span class="octicon octicon-link"></span></a>How does it work? Easy...</h2>
+
+<p><code>Your app</code>  <strong>&gt;</strong> <code>JSON</code> <strong>&gt;</strong> <code>OPIA.API.Proxy</code> <strong>&gt;</strong> <code>OPIA.API.Contracts</code> <strong>&gt;</strong> <code>OPIA.API.Client</code> <strong>&gt;</strong> TransLink</p>
+
+<p><code>Your app</code> <strong>&lt;</strong> <code>JSON</code> <strong>&lt;</strong> <code>OPIA.API.Proxy</code> <strong>&lt;</strong> <code>OPIA.API.Contracts</code> <strong>&lt;</strong> <code>OPIA.API.Client</code> <strong>&lt;</strong> TransLink</p>
+
+<p><strong>OR (even easier - see sample apps)</strong> </p>
+
+<p><code>Your app</code> <strong>&gt;</strong> <code>.Contracts</code> <strong>&gt;</strong> <code>.Proxy</code> <strong>&gt;</strong> <code>.Contracts</code> <strong>&gt;</strong> <code>.Client</code> <strong>&gt;</strong> TransLink</p>
+
+<p><code>Your app</code> <strong>&lt;</strong> <code>.Contracts</code> <strong>&lt;</strong> <code>.Proxy</code> <strong>&lt;</strong> <code>.Contracts</code> <strong>&lt;</strong> <code>.Client</code> <strong>&lt;</strong> TransLink</p>
+
+<h2>
+<a name="more-details-ok" class="anchor" href="#more-details-ok"><span class="octicon octicon-link"></span></a>More details? Ok...</h2>
+
+<ol>
+<li>Your app does a JSON <strong>POST</strong> to the relevant <code>Proxy</code> controller and method, using one of the <code>IRequest</code> objects in the <code>OPIA.API.Contracts</code>. Doing a <code>POST</code> to what appears to be <code>GET</code> method may annoy the REST purists, but see the code comments about why it was done this way.</li>
+<li>The proxy checks to see if it has a cached version of a response to your request already. If it does, and it's still valid within the cached object's TTL, it returns it directly (it doesn't redirect to a <code>GET</code>). </li>
+<li>If you're using the <code>Contracts</code> in your client, to bind the JSON response to the returned of object, then boom! you're done.</li>
+<li>If there isn't a cached version of a response to your query, the proxy invokes the relevant <code>Client</code> to make the same request, on your behalf, to the TransLink OPIA API service.</li>
+<li>If it gets a response object (i.e. it's not an error), it caches it, and then hands the <code>IResponse</code> object back to your app. </li>
+<li>If your app is using the <code>IResponse</code> objects in the <code>Contracts</code>, the response will be deserialised and bound to a model instance for you. And then boom! You're done.</li>
+<li>You can then extract the info you were after, and if necessary use it to build and fire off another, different, request to get related information.</li>
+</ol><p>Have a look at the <code>OPIA.API.Proxy.Tests\ProxyTests\ProxyXXXControllerMethodsTests.cs</code> code to see the kinds of requests you can make, and the kind of information that comes back. 
+There's also some LinqPad scripts in the Samples directory, which exercise Location-based controller methods from a running proxy. LinqPad has an awesome <code>blah.Dump()</code> feature which gives you a great visual representation of what the objects look like. </p>
+
+<h2>
+<a name="a-simple-example" class="anchor" href="#a-simple-example"><span class="octicon octicon-link"></span></a>A simple example</h2>
+
+<div class="highlight"><pre>
+<span class="cm">/* Remember to add reference to NuGet Web Api Client package, and to the OPIA.API.Contracts assembly*/</span>
+
+<span class="k">private</span> <span class="n">HttpClient</span> <span class="nf">SetupNewHttpClient</span><span class="p">()</span>
+<span class="p">{</span>
+        <span class="kt">string</span> <span class="n">baseUrl</span> <span class="p">=</span> <span class="s">"http://playopia.azurewebsites.net/api/"</span><span class="p">;</span>  <span class="c1">// or via .AppSettings["proxyApiBaseUrl"];</span>
+        <span class="kt">var</span> <span class="n">client</span> <span class="p">=</span> <span class="k">new</span> <span class="n">HttpClient</span> <span class="p">{</span> <span class="n">BaseAddress</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Uri</span><span class="p">(</span><span class="n">baseUrl</span><span class="p">)</span> <span class="p">};</span>
+
+        <span class="c1">// change this to "application/xml" if you're determined to do it old-school.</span>
+        <span class="n">client</span><span class="p">.</span><span class="n">DefaultRequestHeaders</span><span class="p">.</span><span class="n">Accept</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="k">new</span> <span class="n">MediaTypeWithQualityHeaderValue</span><span class="p">(</span><span class="s">"application/json"</span><span class="p">));</span> 
+
+        <span class="c1">// any SSL validation callbacks, auth or setting of tokens or cookies</span>
+        <span class="c1">// etc. for your specific proxy implementation will probably need to go in here. </span>
+        <span class="k">return</span> <span class="n">client</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">GetStopsNearby_LocationId_MustGetStopsNearbyLocationId</span><span class="p">()</span>
+<span class="p">{</span>
+        <span class="n">HttpClient</span> <span class="n">client</span> <span class="p">=</span> <span class="n">SetupNewHttpClient</span><span class="p">();</span> <span class="c1">// normally you'd do this once per class, not once per method.</span>
+        <span class="kt">var</span> <span class="n">requestEntity</span> <span class="p">=</span> <span class="k">new</span> <span class="n">StopsNearbyRequest</span>
+        <span class="p">{</span>
+            <span class="n">LocationId</span> <span class="p">=</span> <span class="s">"AD:Anzac Rd, Eudlo"</span><span class="p">,</span> <span class="c1">// LocationId would need to be retrieved via another API call,</span>
+            <span class="n">UseWalkingDistance</span> <span class="p">=</span> <span class="k">true</span><span class="p">,</span>
+            <span class="n">RadiusInMetres</span> <span class="p">=</span> <span class="m">2000</span><span class="p">,</span>
+            <span class="n">MaxResults</span> <span class="p">=</span> <span class="m">10</span><span class="p">,</span>
+        <span class="p">};</span>
+
+        <span class="kt">var</span> <span class="n">response</span> <span class="p">=</span> <span class="n">client</span><span class="p">.</span><span class="n">PostAsJsonAsync</span><span class="p">(</span><span class="s">"location/getstopsnearby"</span><span class="p">,</span> <span class="n">requestEntity</span><span class="p">).</span><span class="n">Result</span><span class="p">;</span>
+        <span class="n">response</span><span class="p">.</span><span class="n">EnsureSuccessStatusCode</span><span class="p">();</span>
+        <span class="n">StopsNearbyResponse</span> <span class="n">result</span> <span class="p">=</span> <span class="n">response</span><span class="p">.</span><span class="n">Content</span><span class="p">.</span><span class="n">ReadAsAsync</span><span class="p">&lt;</span><span class="n">StopsNearbyResponse</span><span class="p">&gt;().</span><span class="n">Result</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">result</span><span class="p">.</span><span class="n">NearbyStops</span><span class="p">.</span><span class="n">Any</span><span class="p">())</span>
+    <span class="p">{</span>
+      <span class="k">foreach</span><span class="p">(</span><span class="kt">var</span> <span class="n">stop</span> <span class="k">in</span> <span class="n">result</span><span class="p">.</span><span class="n">NearbyStops</span><span class="p">)</span>
+      <span class="p">{</span>
+        <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"Stop Id: {0} is {1}m away"</span><span class="p">,</span> <span class="n">stop</span><span class="p">.</span><span class="n">StopId</span><span class="p">,</span> <span class="n">stop</span><span class="p">.</span><span class="n">Distance</span><span class="p">.</span><span class="n">DistanceM</span><span class="p">);</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">Console</span><span class="p">.</span><span class="n">WriteLine</span><span class="p">(</span><span class="s">"{0} GetStopsNearby Found: {1}"</span><span class="p">,</span> <span class="n">DateTime</span><span class="p">.</span><span class="n">Now</span><span class="p">.</span><span class="n">ToString</span><span class="p">(</span><span class="s">"s"</span><span class="p">),</span> <span class="n">result</span><span class="p">.</span><span class="n">NearbyStops</span><span class="p">.</span><span class="n">Count</span><span class="p">());</span>
+<span class="p">}</span>
+</pre></div>
+
+<h2>
+<a name="quick-faq" class="anchor" href="#quick-faq"><span class="octicon octicon-link"></span></a>Quick FAQ</h2>
+
+<ul>
+<li>
+<strong>What License has this been released under</strong> - The Apache v2 license (see <a href="http://choosealicense.com/licenses/">http://choosealicense.com/licenses/</a>). There's no warranty or usability guarantee on this, express or implied. In a nutshell: use and change at your own risk. By forking and modifying this code, the responsibility for supporting anything you build on it rests soley on you. </li>
+<li>
+<strong>What sort of support can I expect from TransLink if I use this?</strong> - At the moment there's <strong>no arrangement</strong> in place with TransLink to support this product. I am not affiliated with them in any way. There are some invite-only developer Google groups which they've set up, which I am a member of, so if you have a question, send an email to <a href="mailto:developers@translink.com.au">developers@translink.com.au</a> and ask them to add you. I built this to help me with some other stuff I am doing, and thought it might be useful to formalise and share it with others.</li>
+<li>
+<strong>I want to run my own proxy, or clients. How do I get my own set of login credentials for the OPIA API?</strong> - I'd suggest sending an email to <a href="mailto:developers@translink.com.au">developers@translink.com.au</a> and just asking them. They're a nice bunch of guys, always happy to help. There are some restrictions around using your credentials in a mobile app that may end up with thousands of users, but have a chat to them.</li>
+<li>
+<strong>What sort of SLA does your Azure shared instance offer?</strong> - None. Zero. Beyond Microsoft's standard SLA for a shared instance on their Azure platform, I can't guarantee anything about how responsive it will be, or how often it might be down. Right now (as of 2013/08/21) it's up and running and there's no reason for me to turn it off. I plan to just leave it up there until I have to take it down (which may be never).</li>
+<li>
+<strong>Do you accept pull requests?</strong> - Depends on the merits of what's been done and what problem it solves. Bug fixes, certainly, especially if they're accompanied by unit test(s) of some sort.</li>
+<li>
+<strong>Why didn't you use $Awesome_Framework_du_jour?</strong> - I built it using the tools I am familiar with, and that are familiar to most .NET and JavaScript developers. I'm trying to solve a problem, not see how easy it was to build something in the new shiny. You want to do this in Node or Ruby or Haskell, go ahead, knock yourself out :)</li>
+<li>
+<strong>Where to from here?</strong> - There's a few things I'd like to add and upgrade, especially with the new Web API 2 coming out soon. Proper OData management for one. And there's all sorts of interesting stuff we could be doing with the Attribute routing. I'll wait for the final release tho - I've been burned in the past by using -Pre frameworks :). Controller method pre- and post-processing, maybe moving the whole caching and logging to an AOP implementation... the list goes on. </li>
+<li>
+<strong>ZOMG TEH CODEZ MAKES MY EYES BLEED WTFLOL??!!!1!</strong> - You can do better? Let's see it then! :). The beauty of FOSS is that it's free-as-in-speech, not free-as-in-beer. It's easy to sit and throw rocks at someone else's code. So rather show us what you've got instead. Make this thing better. Or build your own more awesome one. The onus is on the developer community to lift each other up, not tear each other down.</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Translink-OpiaProxy maintained by <a href="https://github.com/wislon">wislon</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
