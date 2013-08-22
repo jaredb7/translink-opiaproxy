@@ -40,6 +40,8 @@ with other systems...
 - `OPIA.API.Proxy.Tests` - Some integration tests that exercise the `OPIA.API.Proxy` Web API controller methods by actually hitting the running application. You'll very quickly be able to see the possibilities by at these tests.
 
 ## How do I get started?
+- In order to build it, you'll need to **enable NuGet package restore** first, so that VS can automatically download missing dependencies.
+ 
 - Have a look at the sample console application to see how it connects, makes a request, and manipulates the results. There's also some source code available as LinqPad script(s). See the **Samples\LinqPad** folder. If you don't know what LinqPad is, you should try it (http://www.linqpad.net/). It's awesome. You can open the script(s) in a text editor tho.
 
     If using LinqPad, remember to add the `MS Web API Client` NuGet package, and a reference to the `OPIA.API.Contracts` assembly DLL.
