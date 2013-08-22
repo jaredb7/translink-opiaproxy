@@ -29,7 +29,6 @@ _ReSharper*/
 $tf*/
 packages/*
 OPIA.API.Proxy/*.Errors.log.*
-OPIA.API.Proxy/*.Errors.log.*
 */Logs/*.log.*
 OPIA.API.Proxy/packages/*
 OPIA.API.Proxy/*.log
