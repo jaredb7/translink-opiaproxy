@@ -1,19 +1,14 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reactive.Concurrency;
-using System.Reactive.Linq;
 using System.Reflection;
 using Akavache;
 using Castle.MicroKernel.Facilities;
 using Castle.MicroKernel.Registration;
 using Castle.MicroKernel.SubSystems.Configuration;
 using Castle.Windsor;
-using OPIA.API.Contracts.OPIAEntities.Response;
-using ReactiveUI;
-using WebGrease.Css.Extensions;
 
 namespace OPIA.API.Proxy.Infrastructure.Installers
 {
@@ -126,7 +121,7 @@ namespace OPIA.API.Proxy.Infrastructure.Installers
         private DateTime ClearTheExpiredCacheItems(DateTime timeNow)
         {
             Debug.WriteLine("Cache-clearing run started...");
-            var allKeys = GetAllKeys();
+            var allKeys = GetAllKeys().ToList();
             allKeys.ForEach(GarbageCollectExpiredItemsByKey);
             Debug.WriteLine("Cache-clearing run completed in {0}ms", TimeSpan.FromTicks(DateTime.UtcNow.Ticks - timeNow.Ticks).Milliseconds);
             return DateTime.UtcNow;
