@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Configuration;
 using System.Diagnostics;
 using System.Reactive.Linq;
 using System.Security.Cryptography;
@@ -25,6 +26,16 @@ namespace OPIA.API.Proxy.Controllers
         /// </summary>
         public ProxyCache Cache { get; set; }
 
+        private readonly long _cacheTTLInSeconds;
+
+        public ProxyControllerBase()
+        {
+            if (!long.TryParse(ConfigurationManager.AppSettings["defaultCacheTTLSeconds"], out _cacheTTLInSeconds))
+            {
+                _cacheTTLInSeconds = 86400; // cache it for a day.
+            }
+        }
+
         protected T2 CheckCacheForEntry<T1, T2>(T1 request)
             where T1 : IRequest
             where T2 : IResponse
@@ -41,12 +52,12 @@ namespace OPIA.API.Proxy.Controllers
                                                                                  where T2 : IResponse
         {
             var key = GetRequestHash(request);
-            await Cache.InsertObject<T2>(key, response, TimeSpan.FromSeconds(30));
+            await Cache.InsertObject<T2>(key, response, TimeSpan.FromSeconds(_cacheTTLInSeconds));
         }
 
         protected async Task StoreResultInCache(IRequest request, string response)
         {
-            await Cache.InsertObject(GetRequestHash(request), response, TimeSpan.FromSeconds(30));
+            await Cache.InsertObject(GetRequestHash(request), response, TimeSpan.FromSeconds(_cacheTTLInSeconds));
         }
 
         private static string GetRequestHash(IRequest request)
