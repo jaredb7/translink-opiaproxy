@@ -42,7 +42,8 @@ namespace SampleConsole
             const string baseUrl = "http://playopia.azurewebsites.net/api/"; // or from configuration file
             _client = new HttpClient { BaseAddress = new Uri(baseUrl) };
             // change this to "application/xml" if you're determined to do it old-school.
-            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json")); 
+            _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _client.DefaultRequestHeaders.Add("ApiKey", "this_could_be_anything"); // and use SSL!
             // any SSL validation callbacks, auth or setting of tokens or cookies whatever for your specific proxy implementation will probably need to go in here. 
         }
 
