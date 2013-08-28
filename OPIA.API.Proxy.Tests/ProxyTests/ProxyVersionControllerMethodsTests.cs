@@ -30,6 +30,7 @@ namespace OPIA.API.Proxy.Tests.ProxyTests
             string baseUrl = ConfigurationManager.AppSettings["proxyApiBaseUrl"];
             _client = new HttpClient { BaseAddress = new Uri(baseUrl) };
             _client.DefaultRequestHeaders.Accept.Add(new MediaTypeWithQualityHeaderValue("application/json"));
+            _client.DefaultRequestHeaders.Add("ApiKey", "this_could_be_anything"); // and use SSL!
             // any SSL, auth or setting of tokens or cookies whatever will probably need to go in here. 
         }
 
