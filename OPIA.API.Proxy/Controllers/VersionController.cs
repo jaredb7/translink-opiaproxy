@@ -16,7 +16,7 @@ namespace OPIA.API.Proxy.Controllers
     public class VersionController : ProxyControllerBase
     {
         /// <summary>
-        /// Hits the 'api' RPC command. Not cached, as it's for dia
+        /// Hits the 'api' RPC command. Not cached, as it's for diagnostics purposes only.
         /// </summary>
         /// <returns>The current version API ("\"1.0\"")</returns>
         /// <exception cref="HttpRequestException">An HttpRequestException containing an HTTP error response (e.g. 404, 403, etc.)</exception>
