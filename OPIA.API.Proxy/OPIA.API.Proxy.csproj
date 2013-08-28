@@ -188,6 +188,7 @@
     <Compile Include="Infrastructure\Installers\LoggerInstaller.cs" />
     <Compile Include="Infrastructure\Installers\WebApiControllersInstaller.cs" />
     <Compile Include="Infrastructure\Installers\WindsorDependencyManager.cs" />
+    <Compile Include="Infrastructure\MessageHandlers\ApiKeyMessageHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

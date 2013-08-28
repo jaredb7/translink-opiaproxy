@@ -1,4 +1,7 @@
-﻿using System.Web.Http;
+﻿using System.Configuration;
+using System.Web.Http;
+using Castle.Windsor.Installer;
+using OPIA.API.Proxy.Infrastructure.MessageHandlers;
 
 namespace OPIA.API.Proxy.App_Start
 {
@@ -15,6 +18,11 @@ namespace OPIA.API.Proxy.App_Start
                 routeTemplate: "api/{controller}/{action}/{id}",
                 defaults: new { id = RouteParameter.Optional }
             );
+
+        if (bool.Parse(ConfigurationManager.AppSettings["enableApiKeySupport"]))
+        {
+            config.MessageHandlers.Add(new ApiKeyMessageHandler());
+        }
     }
   }
 }
