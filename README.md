@@ -22,7 +22,7 @@ Alternatively, you can use the Azure shared instance I've set up for it (see det
 - It uses .NET's built-in model-binding to provide strongly-typed objects representing the data, both to and from the API. This allows you to use LINQ and IQueryable/IEnumerable to build and manage relationships between data objects, and derive new ones
 - Data objects arrive serialised to JSON to begin with, and they exactly match the structure of the OPIA API (this is a proxy, after all). 
 - Easily portable to Xamarin/MonoTouch, so it's incredibly easy to build native mobile applications (sample app to come)
-- Built-in caching of requests and responses (using [Akavache](https://github.com/github/akavache) ), with configurable cache TTL. Easily swappable via IoC if you decide you want to use a different caching engine. Empirically testing the delivery of cached responses using this proxy is 4x-8x faster (on average) than querying the OPIA service for the same information repeatedly.
+- Built-in caching of requests and responses (using [Akavache](https://github.com/github/akavache) which behaves quite well for low-traffic, few-request scenarios), with configurable cache TTL. Easily swappable via IoC if you decide you want to use a different caching engine. Empirically testing the delivery of cached responses using this proxy is 4x-8x faster (on average) than querying the OPIA service for the same information repeatedly.
 - Extensible - Add your own controllers and methods, make new objects, swap out the caching mechanism, mash up the public transport information
 with other systems... 
 - It's Open Source. Don't like something? Fork it, fix it. Make it better. Make it do what YOU want it to do. 
