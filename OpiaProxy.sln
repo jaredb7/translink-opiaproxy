@@ -20,6 +20,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPIA.API.Proxy.Tests", "OPI
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsole", "Samples\Console\SampleConsole.csproj", "{9D5A39F4-EADC-469A-923D-29BA0181530E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPIA.API.Contracts.Portable", "OPIA.API.Contracts.Portable\OPIA.API.Contracts.Portable.csproj", "{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -50,6 +52,10 @@ Global
 		{9D5A39F4-EADC-469A-923D-29BA0181530E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9D5A39F4-EADC-469A-923D-29BA0181530E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9D5A39F4-EADC-469A-923D-29BA0181530E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>OPIA.API.Contracts.Portable</RootNamespace>
+    <AssemblyName>OPIA.API.Contracts.Portable</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="..\OPIA.API.Contracts\Constants\DirectionType.cs">
+      <Link>Constants\DirectionType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\FareType.cs">
+      <Link>Constants\FareType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\LocationType.cs">
+      <Link>Constants\LocationType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\OpiaApiConstants.cs">
+      <Link>Constants\OpiaApiConstants.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\ServiceType.cs">
+      <Link>Constants\ServiceType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\TimeModeType.cs">
+      <Link>Constants\TimeModeType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\VehicleType.cs">
+      <Link>Constants\VehicleType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\Constants\WalkingSpeedType.cs">
+      <Link>Constants\WalkingSpeedType.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\IRequest.cs">
+      <Link>OPIAEntities\Request\IRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Location\LocationsRequest.cs">
+      <Link>OPIAEntities\Request\Location\LocationsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Location\ResolveRequest.cs">
+      <Link>OPIAEntities\Request\Location\ResolveRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Location\StopsAtLandmarkRequest.cs">
+      <Link>OPIAEntities\Request\Location\StopsAtLandmarkRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Location\StopsNearbyRequest.cs">
+      <Link>OPIAEntities\Request\Location\StopsNearbyRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Location\StopsRequest.cs">
+      <Link>OPIAEntities\Request\Location\StopsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Network\RouteMapPathRequest.cs">
+      <Link>OPIAEntities\Request\Network\RouteMapPathRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Network\RoutesRequest.cs">
+      <Link>OPIAEntities\Request\Network\RoutesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Network\RouteTimeTablesRequest.cs">
+      <Link>OPIAEntities\Request\Network\RouteTimeTablesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Network\StopTimeTablesRequest.cs">
+      <Link>OPIAEntities\Request\Network\StopTimeTablesRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Network\TripMapPathRequest.cs">
+      <Link>OPIAEntities\Request\Network\TripMapPathRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Network\TripsRequest.cs">
+      <Link>OPIAEntities\Request\Network\TripsRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Travel\PlanRequest.cs">
+      <Link>OPIAEntities\Request\Travel\PlanRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Travel\PlanUrlRequest.cs">
+      <Link>OPIAEntities\Request\Travel\PlanUrlRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Version\ApiVersionRequest.cs">
+      <Link>OPIAEntities\Request\Version\ApiVersionRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Request\Version\BuildVersionRequest.cs">
+      <Link>OPIAEntities\Request\Version\BuildVersionRequest.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Common\Position.cs">
+      <Link>OPIAEntities\Response\Common\Position.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Common\Route.cs">
+      <Link>OPIAEntities\Response\Common\Route.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Common\Trip.cs">
+      <Link>OPIAEntities\Response\Common\Trip.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\IResponse.cs">
+      <Link>OPIAEntities\Response\IResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Locations\Location.cs">
+      <Link>OPIAEntities\Response\Locations\Location.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Locations\LocationsResponse.cs">
+      <Link>OPIAEntities\Response\Locations\LocationsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\PlanUrl\PlanUrlResponse.cs">
+      <Link>OPIAEntities\Response\PlanUrl\PlanUrlResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Plan\Fare.cs">
+      <Link>OPIAEntities\Response\Plan\Fare.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Plan\FareDetails.cs">
+      <Link>OPIAEntities\Response\Plan\FareDetails.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Plan\Itinerary.cs">
+      <Link>OPIAEntities\Response\Plan\Itinerary.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Plan\Leg.cs">
+      <Link>OPIAEntities\Response\Plan\Leg.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Plan\PlanResponse.cs">
+      <Link>OPIAEntities\Response\Plan\PlanResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Plan\Traveloptions.cs">
+      <Link>OPIAEntities\Response\Plan\Traveloptions.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Resolve\Location.cs">
+      <Link>OPIAEntities\Response\Resolve\Location.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Resolve\ResolveResponse.cs">
+      <Link>OPIAEntities\Response\Resolve\ResolveResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\RouteMapPath\Path.cs">
+      <Link>OPIAEntities\Response\RouteMapPath\Path.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\RouteMapPath\RouteMapPathResponse.cs">
+      <Link>OPIAEntities\Response\RouteMapPath\RouteMapPathResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Routes\RoutesResponse.cs">
+      <Link>OPIAEntities\Response\Routes\RoutesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\RouteTimeTable\Location.cs">
+      <Link>OPIAEntities\Response\RouteTimeTable\Location.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\RouteTimeTable\LocationInfo.cs">
+      <Link>OPIAEntities\Response\RouteTimeTable\LocationInfo.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\RouteTimeTable\RouteTimeTable.cs">
+      <Link>OPIAEntities\Response\RouteTimeTable\RouteTimeTable.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\RouteTimeTable\RouteTimeTablesResponse.cs">
+      <Link>OPIAEntities\Response\RouteTimeTable\RouteTimeTablesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopsAtLandmark\StopsAtLandmarkResponse.cs">
+      <Link>OPIAEntities\Response\StopsAtLandmark\StopsAtLandmarkResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopsNearby\Distance.cs">
+      <Link>OPIAEntities\Response\StopsNearby\Distance.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopsNearby\Nearbystop.cs">
+      <Link>OPIAEntities\Response\StopsNearby\Nearbystop.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopsNearby\StopsNearbyResponse.cs">
+      <Link>OPIAEntities\Response\StopsNearby\StopsNearbyResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Stops\Stop.cs">
+      <Link>OPIAEntities\Response\Stops\Stop.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Stops\StopsResponse.cs">
+      <Link>OPIAEntities\Response\Stops\StopsResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopTimeTable\Stop.cs">
+      <Link>OPIAEntities\Response\StopTimeTable\Stop.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopTimeTable\StopTimeTable.cs">
+      <Link>OPIAEntities\Response\StopTimeTable\StopTimeTable.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopTimeTable\StopTimeTablesResponse.cs">
+      <Link>OPIAEntities\Response\StopTimeTable\StopTimeTablesResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\StopTimeTable\Trip.cs">
+      <Link>OPIAEntities\Response\StopTimeTable\Trip.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\TripMapPath\TripMapPathResponse.cs">
+      <Link>OPIAEntities\Response\TripMapPath\TripMapPathResponse.cs</Link>
+    </Compile>
+    <Compile Include="..\OPIA.API.Contracts\OPIAEntities\Response\Trips\TripsResponse.cs">
+      <Link>OPIAEntities\Response\Trips\TripsResponse.cs</Link>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\portable-net45+wp80+win8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="$(SolutionDir)\.nuget\NuGet.targets" Condition="Exists('$(SolutionDir)\.nuget\NuGet.targets')" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

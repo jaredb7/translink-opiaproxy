@@ -75,7 +75,7 @@ namespace OPIA.API.Contracts.OPIAEntities.Request.Network
             if (Directions.Any())
             {
                 sb.Append("&directions=");
-                sb.Append(String.Join(",", Directions.Select(d => Convert.ToString((int)d).ToArray())));
+                sb.Append(String.Join(",", Directions.Select(d => (int)d).ToArray()));
             }
 
             sb.AppendFormat("&filterToStartEndStops={0}", FilterToStartEndStops ? "true" : "false");
