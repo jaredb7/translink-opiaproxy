@@ -22,6 +22,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleConsole", "Samples\Co
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OPIA.API.Contracts.Portable", "OPIA.API.Contracts.Portable\OPIA.API.Contracts.Portable.csproj", "{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAndroid", "Samples\SampleAndroid\SampleAndroid.csproj", "{10C0F090-81A9-4C05-B164-43E73A911DD2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -56,6 +58,12 @@ Global
 		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2C935DEE-D575-4104-8073-3EDC2F2A5F7D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10C0F090-81A9-4C05-B164-43E73A911DD2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10C0F090-81A9-4C05-B164-43E73A911DD2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10C0F090-81A9-4C05-B164-43E73A911DD2}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{10C0F090-81A9-4C05-B164-43E73A911DD2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10C0F090-81A9-4C05-B164-43E73A911DD2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10C0F090-81A9-4C05-B164-43E73A911DD2}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

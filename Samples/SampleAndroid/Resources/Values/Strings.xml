@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="FindMyLocation">Find My Location</string>
+    <string name="ShowStopsNearMe">Show Stops Near Me</string>
+    <string name="ApplicationName">SampleAndroid</string>
+</resources>
