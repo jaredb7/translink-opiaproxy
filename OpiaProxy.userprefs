@@ -4,7 +4,7 @@
     <Pads>
       <Pad Id="ProjectPad">
         <State expanded="True">
-          <Node name="SampleAndroid" expanded="True" />
+          <Node name="SampleAndroid" expanded="True" selected="True" />
         </State>
       </Pad>
     </Pads>
@@ -13,4 +13,5 @@
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.SampleAndroid AndroidDeviceId-Debug="0019877e2fa57e" />
 </Properties>
